@@ -37,9 +37,9 @@ import android.util.Xml;
 
 public class ITunesXMLParser extends AsyncTask<String, Void, Document> {
 
-	private final Context cntx;
+	private final MainActivity cntx;
 	
-	public ITunesXMLParser(Context cntx){
+	public ITunesXMLParser(MainActivity cntx){
 		this.cntx=cntx;
 	}
 	
@@ -97,6 +97,12 @@ public class ITunesXMLParser extends AsyncTask<String, Void, Document> {
 		}
 		return null;
 	}
+	
+	@Override
+	protected void onPostExecute(Document result) {
+		Log.d("XML_READ", "onPostExecute");
+		cntx.showListData();
+    }
 	
 	public InputStream getUrlData(String url) throws URISyntaxException, ClientProtocolException, IOException {
 
