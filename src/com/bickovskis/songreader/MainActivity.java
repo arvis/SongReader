@@ -18,7 +18,12 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		final String iTunesUrl="http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topsongs/limit=10/xml";
+		ITunesXMLParser parser=new ITunesXMLParser(getApplicationContext());
+		parser.execute(iTunesUrl);
+		
+		
 		createGroupList();
 		expListView = (ExpandableListView) findViewById(R.id.song_list);
         final SongAdapter expListAdapter = new SongAdapter(this, groupList);
