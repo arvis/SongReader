@@ -7,17 +7,24 @@ import java.util.Map;
  
 //import com.theopentutorials.expandablelist.R;
  
+
+
+
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
  
@@ -47,17 +54,45 @@ public class SongAdapter extends BaseExpandableListAdapter {
  
     public View getChildView(final int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
-        final String laptop = (String) getChild(groupPosition, childPosition);
+        //final String laptop = (String) getChild(groupPosition, childPosition);
         LayoutInflater inflater = context.getLayoutInflater();
  
+        
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.child_item, null);
         }
+        
+       final Song songData = (Song) getGroup(groupPosition);
+        
+        Button downloadButton=(Button) convertView.findViewById(R.id.download);
+        Button iTunesButton=(Button) convertView.findViewById(R.id.view_itunes);
+        
+        downloadButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//new DownloadFromUrl().download(songData.getSongImageUrl());
+				
+				DownloadFromUrl down=new DownloadFromUrl(context);
+				down.execute(songData.getSongImageUrl());
+			}
+		} );
+        
+        iTunesButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(context,ITunesData.class );
+				intent.putExtra("PAGE_URL",songData.getUrl());
+				context.startActivity(intent);
+				
+			}
+		});
+        
  
-        TextView item = (TextView) convertView.findViewById(R.id.song_url);
-        item.setText("lalala "+groupPosition+"-"+childPosition);
 
 /*        
+        TextView item = (TextView) convertView.findViewById(R.id.song_url);
+        item.setText("lalala "+groupPosition+"-"+childPosition);
+        
         ImageView delete = (ImageView) convertView.findViewById(R.id.delete);
         delete.setOnClickListener(new OnClickListener() {
  

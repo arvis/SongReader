@@ -36,7 +36,6 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
 	}
 
 	public void showListData(){
-		Log.d("main_activity", "showListData");
 
 		createGroupList();
 		expListView = (ExpandableListView) findViewById(R.id.song_list);

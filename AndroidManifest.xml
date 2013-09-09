@@ -25,6 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+        android:name="com.bickovskis.songreader.ITunesData"
+        android:label="@string/title_itunes_web"
+        android:parentActivityName="com.bickovskis.songreader.MainActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.bickovskis.songreader.MainActivity" />
+	    </activity>
+    
+        
         
     <provider
      android:name="SongProvider"
