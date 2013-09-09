@@ -24,13 +24,18 @@ import android.widget.TextView;
 public class SongAdapter extends BaseExpandableListAdapter {
  
     private Activity context;
-    private List<String> songs;
+    private List<Song> songs;
  
-    public SongAdapter(Activity context, List<String> songs) {
+    public SongAdapter(Activity context, List<Song> songs) {
         this.context = context;
         this.songs = songs;
     }
  
+    public void addItem(Song item ){
+    	this.songs.add(item);
+    }
+    
+    
     public Object getChild(int groupPosition, int childPosition) {
         //return songs.get(laptops.get(groupPosition)).get(childPosition);
         return null;
@@ -101,7 +106,8 @@ public class SongAdapter extends BaseExpandableListAdapter {
  
     public View getGroupView(int groupPosition, boolean isExpanded,
             View convertView, ViewGroup parent) {
-        String laptopName = (String) getGroup(groupPosition);
+    	
+        final Song songData = (Song) getGroup(groupPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -109,7 +115,7 @@ public class SongAdapter extends BaseExpandableListAdapter {
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.song_name);
-        item.setText(laptopName);
+        item.setText(songData.getSongName());
         return convertView;
     }
  
