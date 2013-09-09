@@ -115,6 +115,14 @@ public class SongAdapter extends BaseExpandableListAdapter {
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.song_name);
+        //ImageView imgView =(ImageView)findViewById(R.id.song_image);
+        
+        final String songUrl=songData.getSongImageUrl();
+        new DownloadImageTask((ImageView) 
+        		convertView.findViewById(R.id.song_image)).
+        		execute(songUrl);
+        
+        
         item.setText(songData.getSongName());
         return convertView;
     }

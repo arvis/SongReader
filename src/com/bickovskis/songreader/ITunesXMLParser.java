@@ -73,16 +73,13 @@ public class ITunesXMLParser extends AsyncTask<String, Void, Document> {
                 Element nameElement = (Element) nameList.item(0);
                 nameList = nameElement.getChildNodes();
                 String name=""+((Node) nameList.item(0)).getNodeValue();
-                Log.i("XML","Name = " + ((Node) nameList.item(0)).getNodeValue());
                 
                 Element imgElement = (Element) imgList.item(0);
                 imgList = imgElement.getChildNodes();
                 String img=""+((Node) imgList.item(0)).getNodeValue();
-                Log.i("XML","Img = " + ((Node) imgList.item(0)).getNodeValue());
                 
                 Element songElement = (Element) songList.item(0);
                 String songName=songElement.getAttribute("href");
-                Log.i("XML","song = " + songName );
                 
                 Song song=new Song(name,img,songName);
                 songsDb.addSong(song);

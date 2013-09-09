@@ -81,9 +81,10 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
 		String url;
 		String songImageUrl;
 		while (cursor.moveToNext()) {
+			
 			songName= cursor.getString(cursor.getColumnIndex(SongDbHelper.COL_SONGNAME));
-			url= cursor.getString(cursor.getColumnIndex(SongDbHelper.COL_SONGURL ));
-			songImageUrl= cursor.getString(cursor.getColumnIndex(SongDbHelper.COL_SONGIMAGE ));
+			songImageUrl= cursor.getString(cursor.getColumnIndex(SongDbHelper.COL_SONGURL ));
+			url= cursor.getString(cursor.getColumnIndex(SongDbHelper.COL_SONGIMAGE ));
 			
 			//Log.d("main",songName);
 			//FIXME: add multiple songs at once

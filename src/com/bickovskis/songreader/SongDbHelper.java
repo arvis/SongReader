@@ -46,8 +46,9 @@ public class SongDbHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		 
 	    ContentValues values = new ContentValues();
-	    values.put(COL_SONGNAME, song.getSongName()); // Contact Name
-	    values.put(COL_SONGURL , song.getUrl() ); // Contact Phone Number
+	    values.put(COL_SONGNAME, song.getSongName()); 
+	    values.put(COL_SONGURL , song.getUrl() ); 
+	    values.put(COL_SONGIMAGE , song.getSongImageUrl()); 
 	 
 	    db.insert(TABLE_SONGLIST, null, values);
 	    db.close(); //		
