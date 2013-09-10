@@ -58,11 +58,12 @@ public class SongDbHelper extends SQLiteOpenHelper {
 		
 		
 		   SQLiteDatabase db = this.getReadableDatabase();
-		   
+
 		    Cursor cursor = db.query(TABLE_SONGLIST, new String[] { "id",
 		            COL_SONGIMAGE, COL_SONGNAME,COL_SONGURL }, null,
 		            new String[] {  }, null, null, null, null);
-		 
+		    
+		    
 		    return cursor;		
 		
 	}

@@ -44,7 +44,6 @@ public class SongAdapter extends BaseExpandableListAdapter {
     
     
     public Object getChild(int groupPosition, int childPosition) {
-        //return songs.get(laptops.get(groupPosition)).get(childPosition);
         return null;
     }
  
@@ -54,7 +53,6 @@ public class SongAdapter extends BaseExpandableListAdapter {
  
     public View getChildView(final int groupPosition, final int childPosition,
             boolean isLastChild, View convertView, ViewGroup parent) {
-        //final String laptop = (String) getChild(groupPosition, childPosition);
         LayoutInflater inflater = context.getLayoutInflater();
  
         
@@ -70,7 +68,6 @@ public class SongAdapter extends BaseExpandableListAdapter {
         downloadButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//new DownloadFromUrl().download(songData.getSongImageUrl());
 				
 				DownloadFromUrl down=new DownloadFromUrl(context);
 				down.execute(songData.getSongImageUrl());
@@ -86,39 +83,7 @@ public class SongAdapter extends BaseExpandableListAdapter {
 				
 			}
 		});
-        
- 
 
-/*        
-        TextView item = (TextView) convertView.findViewById(R.id.song_url);
-        item.setText("lalala "+groupPosition+"-"+childPosition);
-        
-        ImageView delete = (ImageView) convertView.findViewById(R.id.delete);
-        delete.setOnClickListener(new OnClickListener() {
- 
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to remove?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                List<String> child =
-                                    laptopCollections.get(laptops.get(groupPosition));
-                                child.remove(childPosition);
-                                notifyDataSetChanged();
-                            }
-                        });
-                builder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-            }
-        });
-		*/
- 
         return convertView;
     }
  
@@ -150,7 +115,6 @@ public class SongAdapter extends BaseExpandableListAdapter {
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.song_name);
-        //ImageView imgView =(ImageView)findViewById(R.id.song_image);
         
         final String songUrl=songData.getSongImageUrl();
         new DownloadImageTask((ImageView) 
